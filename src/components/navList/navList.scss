@@ -1,0 +1,35 @@
+.navList{
+    display: flex;
+    padding: 0.8em 1em;
+    border-radius: 8px;
+    box-shadow: 0px 0px 9px 0px #a19a9a61;
+    font-size: 14px;
+    .icon{
+        width: 14px;
+        height: 14px;
+        padding: 0 4px;
+    }
+    a{
+        display: flex;
+        align-items: center;
+        text-decoration:none;
+        color:black;
+        padding:0.3em 0.8em;
+        li{
+            display: flex;
+            align-items: center;
+            list-style: none;
+            letter-spacing: 1.3px;
+            .svg{
+                display: flex;
+                align-items: center;
+            }
+            
+        }
+    }
+    a:hover{
+        border-radius: 6px;
+        background-color: #f4f4f4;
+    }
+    
+}
