@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Whisper-Blog
+这个网站是我的个人博客，目前打算采用 `Flask + React` 技术实现前后端的分离。其目的是容纳下我在大学期间学习到的技术栈，同时记录我的日常和技术文章，我希望这是一个能长期维护的项目。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 版本 0.0.0
 
-## Available Scripts
+在这个版本中，我们要解决的是需求文档和需求分析。
 
-In the project directory, you can run:
+### 需求文档
 
-### `npm start`
+1. 用户管理：因为服务器并不是特别高级，所以我并不打算开放权限允许其他用户进行注册登录。但是我希望其他人能点进我的博客进行留言，这就需要做一个留言系统了，将其放置于每篇博文的底下，这就需要识别出留言的人是谁了，所以需要在发评论时保存评论人的信息和密码。
+2. 文章管理：能够识别Markdown格式。
+3. 标签管理：一篇文章能够拥有多个标签，能够通过标签快速找到一类文章。
+4. 归档管理：这里的归档包括文章归档，也包括标签归档
+5. 评论管理：访问者能够通过评论快速注册成为一个访问用户，并且能在文章页中发表评论。
+6. 后台管理：拥有完善的后台管理，能够统计文章和用户，分析文章。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### 需求分析
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### 文章管理
 
-### `npm run build`
+文章主要是由以下元素构成的：文章ID `pid` ,标题 `title` , 内容 `content`, 发表时间 `date` ,标签 `tag` ,当然还有观看数 `reader` 。
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+其中，我们对文章的管理肯定就是基础的增删改查，我们通过React 的 ajax 发送数据给 后端，后端识别发送过来的 `pid` ，然后进行相关的操作。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
