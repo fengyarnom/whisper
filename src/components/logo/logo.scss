@@ -1,32 +1,60 @@
-.logo{
-    margin:10px;
-    
-    .logo-text{
-        font-family: 'Helvetica-Blog';
-        font-size:18px;
-        letter-spacing: 1.5px; 
-        font-weight: 600;
-        .tag1{
-            background-color: #2E3440;
-            border-radius: 4px;
-            color: white;
-            padding: 6px 12px;
-            margin-right: 5px;
-        } 
-        .tag2{
-            background-color: #ac303ced;
-            border-radius: 4px;
-            color: white;
-            padding: 6px 6px;
-            margin-right: 5px;
-        } 
-        .tag3{
-            background-color: #ac303ced;
-            border-radius: 4px;
-            color: white;
-            padding: 6px 12px;
-            margin-right: 5px;
-            box-shadow: 0px 0px 9px 0px #a19a9a61;
+@media screen and (min-width: 960px){
+    .logo{
+        margin:10px;
+        
+        .logo-text{
+            font-family: 'Helvetica-Blog';
+            font-size:18px;
+            letter-spacing: 1.5px; 
+            font-weight: 600;
+            .tag1{
+                background-color: #2E3440;
+                border-radius: 4px;
+                color: white;
+                padding: 6px 12px;
+                margin-right: 5px;
+            } 
+            .tag2{
+                background-color: #ac303ced;
+                border-radius: 4px;
+                color: white;
+                padding: 6px 6px;
+                margin-right: 5px;
+            } 
+            .tag3{
+                background-color: #ac303ced;
+                border-radius: 4px;
+                color: white;
+                padding: 6px 12px;
+                margin-right: 5px;
+                box-shadow: 0px 0px 9px 0px #a19a9a61;
+            }
+            
+        }
+        .menuIcon{
+            display: none;
+        }
+    }
+}
+@media screen and (max-width: 960px){
+    .logo{ 
+        display: flex;      
+        align-items: center;
+        justify-content: space-between;
+        .logo-text{
+            font-family: 'Helvetica-Blog';
+            font-size:20px;
+            letter-spacing: 1.5px; 
+            font-weight: 600;
+            .tag2{
+                display: none;
+            } 
+        }
+        .menuIcon{
+            svg{
+                width: 32px;
+                height: 32px;
+            }
         }
     }
 }

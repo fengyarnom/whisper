@@ -1,22 +1,31 @@
-.options{
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    li{
-        list-style: none;
-        padding: 0.5em 1.8em;
-    } 
-    .contact{
-        
-        border-radius: 8px;
-        box-shadow: 0px 0px 9px 0px #a19a9a61;
-        
+@media screen and (min-width: 960px){
+    .options{
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        li{
+            list-style: none;
+            padding: 0.5em 1.8em;
+        } 
+        .contact{
+            
+            border-radius: 8px;
+            box-shadow: 0px 0px 9px 0px #a19a9a61;
+            
+        }
+        .signIn{
+            color:white;
+            background-color: black;
+            border-radius: 8px;
+            padding: 0.5em 1.5em;
+            font-weight: 600;
+        }
     }
-    .signIn{
-        color:white;
-        background-color: black;
-        border-radius: 8px;
-        padding: 0.5em 1.5em;
-        font-weight: 600;
+    
+}
+
+@media screen and (max-width: 960px){
+    .options{
+        display: none;
     }
 }
