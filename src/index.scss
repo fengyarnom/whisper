@@ -21,9 +21,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+a{
+  text-decoration: none;
+  color: #3d3d3d;
+}
 @import url('./App.scss');
 @import url('./components/header/header.scss');
 @import url('./components/logo/logo.scss');
 @import url('./components/navList/navList.scss');
 @import url('./components/options/options.scss');
 @import url('./components/navBar/navBar.scss');
+@import url('./components/article/article.scss');
+@import url('./components/post/post.scss');
+@import url('./components/siderbar/siderbar.scss');
+@import url('./pages/Home/Home.scss');
+@import url('./components/messageBox/messageBox.scss');

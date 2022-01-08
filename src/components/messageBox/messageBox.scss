@@ -1,0 +1,38 @@
+.messageBox{
+    .header-box{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 700;
+        font-size: 13px;
+        margin-bottom: 5px;
+        letter-spacing: 1.2px;
+        button{
+            display: flex;
+            border: none;
+            background-color:transparent;
+            border-radius: 5px;
+            padding: 6px 6px;
+            svg{
+                width: 16px;
+                height: 16px;
+            }
+        }
+        button:hover{
+            background-color:#e7e2e280;
+        }
+    }
+    .post{
+        .post-header{
+            display: none;
+        }
+        border-bottom: none;
+        padding-bottom: 0; 
+        margin-bottom: 0;
+        
+        letter-spacing: 1px;
+        font-size: 16px;
+        color: #3d3d3f;
+        line-height: 1.7em;
+    }
+}
