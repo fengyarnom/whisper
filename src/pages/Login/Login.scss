@@ -1,0 +1,15 @@
+.login{
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+
+    .login-box{
+        padding: 2em 4em;
+        display: flex;
+        flex-direction: column;
+        .header-login{
+            font-size: 28px;
+            font-weight: 700;
+        }
+    }
+}
