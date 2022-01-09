@@ -1,8 +1,6 @@
 .login{
     display: flex;
     justify-content: center;
-    margin-top: 3em;
-
     .login-box{
         padding: 2em 4em;
         display: flex;
@@ -10,6 +8,44 @@
         .header-login{
             font-size: 28px;
             font-weight: 700;
+            letter-spacing: 6px;
+            margin-bottom: 0.4em;
+            color: #34495e;
         }
+        .header-login::after{
+            margin: 0.5em 0;
+            content: "";
+            width: 1.2em;
+            height:2px;
+            display: block;
+            background: #34495e;
+            
+        }
+        form{
+            .item{
+                display: flex;
+                flex-direction: column;
+                padding: 0.5em 0;
+                input{
+                    font-family: 'Helvetica';
+                    font-size: 18px;
+                    height:1.7em;
+                    border:none;
+                    outline: none;
+                    letter-spacing: 1.3px;
+                    border-radius: 6px;
+                    transition: 1s;
+                }
+                button{
+                    font-size: 20px;
+                    outline: none;
+                    border:none;
+                    color:white;
+                    border-radius: 5px;
+                    background-color: #196387eb;
+                }
+            }
+        }
+        
     }
 }

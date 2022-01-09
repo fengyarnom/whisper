@@ -5,9 +5,9 @@ import SiderBar from "../../components/siderbar";
 export default class APP extends React.Component{
   render(){
     return(
-      <div className="Home">
+      <div className="Home main-left">
           <Article></Article>
-          <SiderBar></SiderBar>
+          
       </div>
     )
   }

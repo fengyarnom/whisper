@@ -15,11 +15,14 @@ export default class Post extends React.Component{
       <div className="post">
           <div className="post-header">
           
-          <div className="title">
-              <a href="">{this.state.title}</a>
-          </div>
-          <div className="date">发布时间：{this.state.date}</div>
-          <div className="tags">标签分类：<a href="">{this.state.tag}</a></div>
+            <div className="title">
+                <a href="">{this.state.title}</a>
+            </div>
+            <div className="info">
+              <div className="date">发布时间：{this.state.date}</div>
+              <div className="tags">标签分类：<a href="">{this.state.tag}</a></div>
+            </div>
+          
           </div>   
           <div className="post-content" dangerouslySetInnerHTML={{__html: this.state.content}}> 
             

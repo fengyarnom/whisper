@@ -1,9 +1,10 @@
 .Home{
     display: flex;
-    padding: 2em 10%;
+
     align-items: flex-start;
     justify-content: center;
     min-height: 100%;
+
 }
 @media screen and (max-width: 960px){
     .Home{

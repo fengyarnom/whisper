@@ -7,7 +7,7 @@ export default class SiderBar extends React.Component{
   }
   render(){
     return(
-      <div className="siderbar">
+      <div className="siderbar main-right">
 
         <MessageBox title="NOTICE" content={this.state.content}></MessageBox>
         <ListBox></ListBox>

@@ -1,3 +1,17 @@
+.App{
+    padding: 0 1em;
+    .main{
+        display: flex;
+        justify-content: center;
+        margin-top: 2em;
+    }
+    .main-left{
+        width: 55%;
+    }
+    .main-right{
+        width: 15%;
+    }
+}
 @media screen and (max-width: 960px){
     .App{
         padding: 0 1em;
