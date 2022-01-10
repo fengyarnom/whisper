@@ -33,8 +33,17 @@
                     border:none;
                     outline: none;
                     letter-spacing: 1.3px;
-                    border-radius: 6px;
-                    transition: 1s;
+                    border-radius: 12px;
+                    transition: 0.8s;
+                    box-shadow: 0px 0px 5px 0px #a19a9a61;
+                    border-radius: 2px;
+                    padding: 0.3em 1em;
+                    color: #797676;
+                }
+                input:focus{
+                    padding: 0.5em 1em;
+                    color:#353232;
+                    box-shadow: 0px 0px 5px 0px #a19a9a61;
                 }
                 button{
                     font-size: 20px;
@@ -43,6 +52,7 @@
                     color:white;
                     border-radius: 5px;
                     background-color: #196387eb;
+                    padding:0.3em 0;
                 }
             }
         }
