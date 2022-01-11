@@ -19,7 +19,7 @@
     "start": "react-scripts start",
     "prebuild": "rm -rf ./api/templates/index.html && rm -rf ./api/static",
     "build": "react-scripts build",
-    "postbuild": "mv ./build/index.html ./api/templates/ &&  mv ./build/static ./api/static",
+    "postbuild": "mv ./build/index.html ./api/core/templates/ &&  mv ./build/static ./api/core/static",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
