@@ -8,13 +8,11 @@ import json
 from core import create_app
 from core.Modle.DB import *
 from flask_marshmallow import Marshmallow
+
 # 初始化app和db实例
 # app 的初始化在 core的__init__包
 # db  的模型在core->Modle->DB包
 app,db = create_app()
-# ma = Marshmallow(app)
-
-
 
 @app.route('/',methods=['POST', 'GET'])
 def index():
@@ -43,19 +41,15 @@ def index():
             tag = "默认",
             isTop = 0
             )
-        db.session.add(root)
-        db.session.add(defalutPost)
-        db.session.add(defalutPost2)
+        db.session.add_all([root,defalutPost,defalutPost2])
         db.session.commit()
-
-        
+     
         return render_template('index.html')
-      
+
     elif not database_exists(app.config["SQLALCHEMY_DATABASE_URI"]) and request.method == 'GET':
         return render_template('DBINIT.html')
 
     else:
-
         return render_template('index.html')
     
 
@@ -83,23 +77,40 @@ def login():
         'data':'hello'
     }
 
-# 测试
-@app.route('/api/getPostByTime',methods=['POST', 'GET'])
-def getPostByTime():
+
+@app.route('/api/getPost',methods=['POST', 'GET'])
+def getPost():
     # posts = Post.query.order_by(Post.id.desc()).filter_by(isTop=0).limit(5).all()
 
-    # one_user = User.query.first()
-    # user_schema = UserSchema()
-    # output  = user_schema.dump(one_user)
+    # 向数据库获取数据
+    post_list = Post.query
 
-    one_post = Post.query.all()
-    print(one_post)
+
+    # 获取URL传来的参数
+    # 当存在 by = ？ 时，传入 order_by 参数
+    by = request.args.get("by")
+    # 当存在order = reverse 时，逆序输出列表
+    order = request.args.get("order")
+    # 当 limit = ? 时，传入限制数
+    limit = request.args.get("limit")
+
+    # 处理是否逆序
+    if order == "reverse":
+        post_list = post_list.order_by(getattr(Post, by, 'id').desc())
+    else:
+        post_list = post_list.order_by(getattr(Post, by, 'id'))
+    
+    # 处理输出限制
+    if limit is not None:
+        post_list = post_list.limit(limit)
+    
+    # 获取所有列表
+    post_list = post_list.all()
+    # Marshmallow 序列化 SQLAlchemy 对象
     post_schema = PostSchema(many=True)
-    output2 = post_schema.dump(one_post)
-    # post_schema = PostSchema()
-    # output = post_schema(posts)
-    # print(output)
-    return jsonify({'data':output2})
+    post_list = post_schema.dump(post_list)
+
+    return jsonify({'data':post_list})
 
 if __name__ == '__main__':
     app.run('0.0.0.0.',port=80,debug=True)

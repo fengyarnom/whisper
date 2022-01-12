@@ -18,8 +18,8 @@ export default class Article extends React.Component{
     ],
     b:{}
   }
-    componentDidMount() {
-    fetch("/api/getPostByTime")
+  componentDidMount() {
+    fetch("/api/getPost?order=reverse&by=id&limit=5")
       .then(res => res.json())
       .then(
         (result) => {
@@ -39,7 +39,13 @@ export default class Article extends React.Component{
   render(){
     return(
       <div className="article">
-        
+        {
+          this.state.articles.map(item =>
+            (
+              <Post key = {item.id} title={item.title} content={item.content} date={item.date} tag={item.tag}></Post>
+            )  
+          )
+        }
       </div>
     )
   }
