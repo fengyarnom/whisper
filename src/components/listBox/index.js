@@ -1,19 +1,28 @@
 import React from "react";
 
 export default class ListBox extends React.Component{
+  constructor(props){
+    super(props)
+
+  }
+
   render(){
     return(
       <div className="listBox">
             <div className="header-box">
-                <div className="title-header">RECENT POSTS</div>
+                <div className="title-header">{this.props.title}</div>
             </div>
             <div className="content-box">
-                <a href="">item</a>
-                <a href="">itemasdasdasdasdasdasasdaadasds</a>
-                <a href="">itemasdasdasdasdasdasasdaadasds</a>
-                <a href="">itemasdasdasdasdasdasasdaadasds</a>
-                <a href="">你好，世界</a>
+                
+                {
+                  this.props.content.map(item =>
+                    (
+                      <a href="" key={item.id}>{item.title} </a>
+                    )  
+                  )
+                }
             </div>
+            
       </div>
     )
   }

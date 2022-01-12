@@ -7,6 +7,7 @@ export default class Post extends React.Component{
       title:this.props.title,
       date:this.props.date,
       tag:this.props.tag,
+      time:this.props.time,
       content:this.props.content,
     }
   }
@@ -19,7 +20,7 @@ export default class Post extends React.Component{
                 <a href="">{this.state.title}</a>
             </div>
             <div className="info">
-              <div className="date">发布时间：{this.state.date}</div>
+              <div className="date">发布时间：{this.state.time}</div>
               <div className="tags">标签分类：<a href="">{this.state.tag}</a></div>
             </div>
           
