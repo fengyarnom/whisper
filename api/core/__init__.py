@@ -1,7 +1,7 @@
 from flask import Flask
 import json
 from flask_cors import *
-from core.Modle.DB import db
+from core.Modle.DB import db,ma
 import pymysql
 def create_app():
     app = Flask(__name__)
@@ -19,6 +19,7 @@ def create_app():
 
     db.app=app
     db.init_app(app)
+    ma.init_app(app)
 
     # 设置允许跨域请求
     CORS(app, supports_credentials=True)

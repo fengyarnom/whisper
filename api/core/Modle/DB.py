@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_marshmallow import Marshmallow
 db = SQLAlchemy()
+ma = Marshmallow()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -21,3 +22,12 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post %r>' % self.title
+
+class UserSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User
+
+class PostSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Post
+

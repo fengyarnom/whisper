@@ -4,3 +4,5 @@ flask_sqlalchemy
 pymysql
 mariadb
 sqlalchemy-utils
+flask_marshmallow
+marshmallow-sqlalchemy
