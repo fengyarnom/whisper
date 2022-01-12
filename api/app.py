@@ -35,8 +35,17 @@ def index():
             tag = "默认",
             isTop = 0
             )
+        defalutPost2 = Post(
+            title = "你好，世界2",
+            content="2这是系统默认添加的一篇博文，当您看到它的时候，说明服务器与数据库配置正确",
+            pid = time.strftime("%Y%m%d%H%M%S", time.localtime()),
+            time = datetime.now(),
+            tag = "默认",
+            isTop = 0
+            )
         db.session.add(root)
         db.session.add(defalutPost)
+        db.session.add(defalutPost2)
         db.session.commit()
 
         
@@ -83,13 +92,14 @@ def getPostByTime():
     # user_schema = UserSchema()
     # output  = user_schema.dump(one_user)
 
-    one_post = Post.query.first()
-    post_schema = PostSchema()
+    one_post = Post.query.all()
+    print(one_post)
+    post_schema = PostSchema(many=True)
     output2 = post_schema.dump(one_post)
     # post_schema = PostSchema()
     # output = post_schema(posts)
     # print(output)
-    return output2
+    return jsonify({'data':output2})
 
 if __name__ == '__main__':
     app.run('0.0.0.0.',port=80,debug=True)
