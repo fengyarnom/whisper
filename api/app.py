@@ -71,11 +71,14 @@ def hello():
 @app.route('/api/login',methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
-       jsonData = request.get_json()
-       print(jsonData)
-    return {
-        'data':'hello'
-    }
+        jsonData = request.get_json()
+        user = User.query.filter(User.username == jsonData['username'],User.password == jsonData['password']).all()
+        
+        if len(user) != 0:
+            return jsonify({'status':'200'})
+        else:
+            return jsonify({'status':'4'})
+    return jsonify({'status':'0'})
 
 
 @app.route('/api/getPost',methods=['POST', 'GET'])

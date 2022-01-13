@@ -4,8 +4,6 @@ export default class Login extends React.Component{
   state = {
       username:'',
       password:'',
-      res:'defalut',
-      hi:'hi'
   }
   handleSign(e){
     e.preventDefault();
@@ -20,10 +18,10 @@ export default class Login extends React.Component{
     //   .catch(e => console.log('错误:', e))
     let data = {username: this.state.username,password:this.state.password}
     let body = JSON.stringify(data, 1)
-    fetch('http://192.168.2.108:80/api/login',{
+    fetch('/api/login',{
       method:'post',//改成post
       mode: 'cors',//跨域
-      headers: {//请求头
+      headers: {
       'Content-Type': 'application/json;charset=UTF-8'
       },
       body//向服务器发送的数据
@@ -60,7 +58,6 @@ export default class Login extends React.Component{
             登录你的帐号🙈
             </div>
             <form action="#">
-
                 <div className="item">
                     <input type="text" name="username" value={this.state.username} placeholder="用户名" 
                     onChange={e => this.setState({username:e.target.value})}/>

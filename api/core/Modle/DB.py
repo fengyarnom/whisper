@@ -9,7 +9,7 @@ class User(db.Model):
     password = db.Column(db.String(50),nullable=False)
     def __repr__(self):
        return "<User(username='%s', password='%s')>" % (
-            self.name, self.password)
+            self.username, self.password)
 
 class Post(db.Model):
     id = db.Column(db.Integer, unique=True,primary_key=True)
