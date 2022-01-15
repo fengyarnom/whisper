@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,jsonify
+from flask import Flask,render_template,redirect,url_for,request,jsonify,session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import database_exists,create_database
 import time
@@ -13,7 +13,7 @@ from flask_marshmallow import Marshmallow
 # app 的初始化在 core的__init__包
 # db  的模型在core->Modle->DB包
 app,db = create_app()
-
+app.config['SECRET_KEY'] = 'yarnom'
 @app.route('/',methods=['POST', 'GET'])
 def index():
     # 逻辑：
@@ -72,13 +72,25 @@ def hello():
 def login():
     if request.method == 'POST':
         jsonData = request.get_json()
-        user = User.query.filter(User.username == jsonData['username'],User.password == jsonData['password']).all()
+        if 'username' in jsonData:
+            user = User.query.filter(User.username == jsonData['username'],User.password == jsonData['password']).all()
+            if len(user) != 0:
+                session['username'] = jsonData['username']
+                print(session.get('username'))
+                return jsonify({'status':'Pass'})
+            else:
+                return jsonify({'status':'Error'})
+                
         
-        if len(user) != 0:
-            return jsonify({'status':'200'})
-        else:
-            return jsonify({'status':'4'})
-    return jsonify({'status':'0'})
+        if 'redirect' in jsonData:
+            if jsonData['redirect'] == '200':
+                if 'username' in session:
+                    return jsonify({'redirect':'200'})
+                else:
+                    return jsonify({'redirect':'404'})
+                
+        
+    return jsonify({'status':'Normal'})
 
 
 @app.route('/api/getPost',methods=['POST', 'GET'])

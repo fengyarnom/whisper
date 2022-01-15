@@ -29,6 +29,13 @@ a{
   text-decoration: none;
   color: #3d3d3d;
 }
+.Warning{
+  background-color: #fff3cd;
+  color: #664d03;
+}
+.disable{
+  display: none;
+}
 @import url('./App.scss');
 @import url('./components/header/header.scss');
 @import url('./components/logo/logo.scss');

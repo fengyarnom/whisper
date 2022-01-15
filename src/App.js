@@ -8,16 +8,15 @@ export default class APP extends React.Component{
   render(){
     return(
       <div className="App">
-        <Router>
-          <Header></Header>
+        <Header></Header>
           <div className="main">
             <Routes>
-              <Route path='/' element={<Home/>} />
               <Route path='/Login' element={<Login/>} />
+              <Route path='*' element={<Home/>} />
+              
             </Routes>
             <SiderBar></SiderBar>
           </div>
-        </Router>
       </div>
     )
   }
