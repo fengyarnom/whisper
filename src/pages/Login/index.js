@@ -7,15 +7,6 @@ export default class Login extends React.Component{
   }
   handleSign(e){
     e.preventDefault();
-    // fetch(
-    //   '/hello'
-    // )
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     console.log(data)
-    //     this.setState({res: data.data})
-    //   })
-    //   .catch(e => console.log('错误:', e))
     let data = {username: this.state.username,password:this.state.password}
     let body = JSON.stringify(data, 1)
     fetch('/api/login',{
@@ -27,43 +18,35 @@ export default class Login extends React.Component{
       body//向服务器发送的数据
       })
       .then(res=>res.json())
-      .then(json=>{console.log(json)})
+      .then(res=>{
+        if(res['status'] == 'Pass'){
+          window.location.href = "/Admin";
+        }
+        else if(res['status'] == 'Error'){
 
+        }
+      })
+
+    // 
     
   }
-  // componentDidMount() {
-  //   fetch("/hello")
-  //     .then(res => res.json())
-  //     .then(
-  //       (result) => {
-  //         this.setState({
-  //           res: result.data
-  //         });
-  //       },
-  //       // Note: it's important to handle errors here
-  //       // instead of a catch() block so that we don't swallow
-  //       // exceptions from actual bugs in components.
-  //       (error) => {
-  //         this.setState({
-  //           error
-  //         });
-  //       }
-  //     )
-  // }
   render(){
+
     return(
+
       <div className="login main-left">
         <div className="login-box">
             <div className="header-login">
             登录你的帐号🙈
             </div>
+            
             <form action="#">
+                
                 <div className="item">
                     <input type="text" name="username" value={this.state.username} placeholder="用户名" 
                     onChange={e => this.setState({username:e.target.value})}/>
                 </div>
                 <div className="item">
-
                     <input type="password" value={this.state.password} placeholder="密码" 
                     onChange={e => this.setState({password:e.target.value})}/>
                 </div>
