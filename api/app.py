@@ -67,9 +67,10 @@ def hello():
         'data':he
     }
 
-# 测试
+# 登录路由
 @app.route('/api/login',methods=['POST', 'GET'])
 def login():
+    # 目前所有操作
     if request.method == 'POST':
         jsonData = request.get_json()
         if 'username' in jsonData:
@@ -93,6 +94,7 @@ def login():
     return jsonify({'status':'Normal'})
 
 
+# 获取文章
 @app.route('/api/getPost',methods=['POST', 'GET'])
 def getPost():
     # posts = Post.query.order_by(Post.id.desc()).filter_by(isTop=0).limit(5).all()
@@ -127,5 +129,26 @@ def getPost():
 
     return jsonify({'data':post_list})
 
+@app.route('/api/newPost',methods=['POST', 'GET'])
+def newPost():
+    if request.method == 'POST':
+        jsonData = request.get_json()
+        print(jsonData)
+        # if 'title' in jsonData:
+            # new_post = Post(
+            #     title = jsonData['title'],
+            #     content=jsonData['content'],
+            #     pid = time.strftime("%Y%m%d%H%M%S", time.localtime()),
+            #     time = datetime.now(),
+            #     tag = jsonData['tag'],
+            #     isTop = 0
+            # )
+            # db.session.add_all([new_post])
+            # db.session.commit()
+
+
+       
+
+    return jsonify({'data':'Hello'})
 if __name__ == '__main__':
     app.run('0.0.0.0.',port=80,debug=True)
