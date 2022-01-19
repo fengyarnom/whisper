@@ -23,6 +23,17 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post %r>' % self.title
 
+class Notice(db.Model):
+    id = db.Column(db.Integer, unique=True,primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    time = db.Column(db.Date, nullable=False)
+    pid = db.Column(db.String(60), nullable=False)
+    tag = db.Column(db.String(60), nullable=True)
+
+    def __repr__(self):
+        return '<Post %r>' % self.pid
+
 class UserSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = User
@@ -30,4 +41,8 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
 class PostSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Post
+
+class NoticeSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Notice
 

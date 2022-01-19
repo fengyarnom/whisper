@@ -5,7 +5,7 @@ export default class Options extends React.Component{
     e.preventDefault();
     let data = {redirect: '200'}
     let body = JSON.stringify(data, 1)
-    fetch('/api/login',{
+    fetch('/login',{
       method:'post',//改成post
       mode: 'cors',//跨域
       headers: {

@@ -5,7 +5,7 @@ export default class Article extends React.Component{
     articles:[],
   }
   componentDidMount() {
-    fetch("/api/getPost?order=reverse&by=id&limit=5")
+    fetch("/getPost?order=reverse&by=id&limit=5")
       .then(res => res.json())
       .then(
         (result) => {

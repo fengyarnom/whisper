@@ -8,13 +8,14 @@
     "@testing-library/user-event": "^13.5.0",
     "node-sass": "^7.0.1",
     "react": "^17.0.2",
+    "react-cookies": "^0.1.1",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.2"
   },
-  "proxy": "http://192.168.2.108:80/",
-  "homepage":"./",
+  "proxy": "http://192.168.2.108:80/api/",
+  "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
     "prebuild": "rm -rf ./api/templates/index.html && rm -rf ./api/static",

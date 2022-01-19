@@ -1,13 +1,18 @@
 import React from "react";
-import MessageBox from "../messageBox";
+import MessageList from "../messageList";
 import ListBox from "../listBox";
+import cookie from 'react-cookies'
 export default class SiderBar extends React.Component{
+  constructor(props){
+    super(props)
+    
+  }
   state = {
-    content:'你好',
-    recentPost:[]
+    recentPost:[],
+    noticeList:[]
   }
   componentDidMount(){
-    fetch("/api/getPost?order=reverse&by=id&limit=10")
+    fetch("/getPost?order=reverse&by=id&limit=10")
     .then(res => res.json())
     .then(
       (result) => {
@@ -21,12 +26,28 @@ export default class SiderBar extends React.Component{
         });
       }
     )
+
+    fetch("/getNotice?order=reverse&by=id")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        this.setState({
+          noticeList: result.data
+        }); 
+        console.log(this.state.noticeList)
+      },
+      (error) => {
+        this.setState({
+          error
+        });
+      }
+    )
   }
 
   render(){
     return(
       <div className="siderbar main-right">
-        <MessageBox title="NOTICE" content={this.state.content} backColor="Warning" close="True"></MessageBox> 
+        <MessageList messageList={this.state.noticeList}></MessageList>
         <ListBox title="RECENT POSTS" content={this.state.recentPost}></ListBox> 
         
       </div>

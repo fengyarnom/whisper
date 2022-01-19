@@ -1,5 +1,6 @@
 import React from "react";
 import Post from "../post";
+import cookie from 'react-cookies'
 export default class MessageBox extends React.Component{
   constructor(props){
     super(props)
@@ -8,7 +9,15 @@ export default class MessageBox extends React.Component{
       content:this.props.content,
       backColor:this.props.backColor,
       close:this.props.close,
+      pid:this.props.pid
     }
+  }
+  close(){
+    let closedMessage = cookie.load('closedMessage')
+    closedMessage.push(this.state.pid)
+    cookie.save('closedMessage',closedMessage)
+    var box=document.getElementById(this.state.pid);
+    box.remove();
   }
   render(){
     let closeButton;
@@ -29,10 +38,10 @@ export default class MessageBox extends React.Component{
 
     
     return(
-      <div className={"messageBox "+this.state.backColor}>
+      <div className={"messageBox "+this.state.backColor} id={this.state.pid}>
         <div className="header-box">
           <div className="title-header">{this.state.title}</div> 
-          <div className="post-content" dangerouslySetInnerHTML={{__html: closeButton}}></div>
+          <div className="post-content" onClick={this.close.bind(this)} dangerouslySetInnerHTML={{__html: closeButton}}></div>
         </div>
         <Post content={this.state.content}></Post>
       </div>

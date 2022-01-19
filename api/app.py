@@ -129,26 +129,62 @@ def getPost():
 
     return jsonify({'data':post_list})
 
+# 获取通告
+@app.route('/api/getNotice',methods=['POST', 'GET'])
+def getNotice():
+    # 向数据库获取数据
+    notice_list = Notice.query
+
+
+    # 获取URL传来的参数
+    # 当存在 by = ？ 时，传入 order_by 参数
+    by = request.args.get("by")
+    # 当存在order = reverse 时，逆序输出列表
+    order = request.args.get("order")
+
+    # 处理是否逆序
+    if order == "reverse":
+        notice_list = notice_list.order_by(getattr(Notice, by, 'id').desc())
+    else:
+        notice_list = notice_list.order_by(getattr(Notice, by, 'id'))
+    
+    
+    # 获取所有列表
+    notice_list = notice_list.all()
+    # Marshmallow 序列化 SQLAlchemy 对象
+    notice_schema = NoticeSchema(many=True)
+    notice_list = notice_schema.dump(notice_list)
+
+    return jsonify({'data':notice_list})
+
 @app.route('/api/newPost',methods=['POST', 'GET'])
 def newPost():
     if request.method == 'POST':
         jsonData = request.get_json()
         print(jsonData)
-        # if 'title' in jsonData:
-            # new_post = Post(
-            #     title = jsonData['title'],
-            #     content=jsonData['content'],
-            #     pid = time.strftime("%Y%m%d%H%M%S", time.localtime()),
-            #     time = datetime.now(),
-            #     tag = jsonData['tag'],
-            #     isTop = 0
-            # )
-            # db.session.add_all([new_post])
-            # db.session.commit()
-
-
-       
-
+        if jsonData['postClass'] == 'post':
+            if 'title' in jsonData:
+                new_post = Post(
+                    title = jsonData['title'],
+                    content=jsonData['content'],
+                    pid = time.strftime("%Y%m%d%H%M%S", time.localtime()),
+                    time = datetime.now(),
+                    tag = jsonData['tag'],
+                    isTop = 0
+                )
+                db.session.add_all([new_post])
+                db.session.commit()
+        elif jsonData['postClass'] == 'notice':
+            if 'content' in jsonData:
+                new_notice = Notice(
+                    title = jsonData['title'],
+                    content=jsonData['content'],
+                    pid = time.strftime("%Y%m%d%H%M%S", time.localtime()),
+                    time = datetime.now(),
+                    tag = '默认'
+                )
+                db.session.add(new_notice)
+                db.session.commit()
     return jsonify({'data':'Hello'})
 if __name__ == '__main__':
     app.run('0.0.0.0.',port=80,debug=True)

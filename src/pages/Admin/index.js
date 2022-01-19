@@ -19,7 +19,7 @@ export default class Admin extends React.Component{
       postClass:this.state.postClass
     }
     let body = JSON.stringify(data, 1)
-    fetch('/api/newPost',{
+    fetch('/newPost',{
       method:'post',//改成post
       mode: 'cors',//跨域
       headers: {

@@ -9,7 +9,7 @@ export default class Login extends React.Component{
     e.preventDefault();
     let data = {username: this.state.username,password:this.state.password}
     let body = JSON.stringify(data, 1)
-    fetch('/api/login',{
+    fetch('/login',{
       method:'post',//改成post
       mode: 'cors',//跨域
       headers: {
